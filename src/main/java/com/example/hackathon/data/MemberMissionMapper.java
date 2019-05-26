@@ -33,5 +33,5 @@ public interface MemberMissionMapper {
      * 根据Id将某一个memberMission的状态改为已完成
      *成功则返回true，失败返回false
      */
-    boolean end(@Param("memberMissionId") int memberMissionId);
+    void end(@Param("memberMissionId") int memberMissionId);
 }

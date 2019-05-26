@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 public class Mission {
-    private int Id;
+    private int id;
     private String name;
     private String description;
     private int groupId;
@@ -23,11 +23,11 @@ public class Mission {
         missionForm.setEndtime(mission.getEndtime());
     }
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        id = id;
     }
 
 

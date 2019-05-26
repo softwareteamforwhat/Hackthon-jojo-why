@@ -19,14 +19,14 @@ public interface SubMissionMapper {
 
     /**
      * 根据SubMission的Id查找对应的SubMission
-     * @param Id
+     * @param id
      * @return
      */
-    SubMission selectSubMissionById(@Param("Id") int Id);
+    SubMission selectSubMissionById(@Param("id") int id);
 
     /**
      * 根据ID将某一个SubMission的状态改为已完成
      * 成功则返回true，失败返回false
      */
-    boolean end(@Param("subMissionId") int subMissionId);
+    void end(@Param("subMissionId") int subMissionId);
 }
