@@ -22,4 +22,16 @@ public interface User2GroupMapper {
      * @return List<WorkGroup>
      */
     List<WorkGroup> getGroupByUser(@Param("userId") Integer userId);
+
+    /**
+     * 用户加入某组
+     * @param userId,gou
+     */
+
+
+    /**
+     * 用户退出某组
+     * @param userId,
+     */
+
 }
