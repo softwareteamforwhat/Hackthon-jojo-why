@@ -21,6 +21,7 @@ CREATE TABLE `workgroup`(
 	`main_mission` varchar(50) NOT NULL,
 	`status` int(2) NOT NULL,
 	`start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`current_mission_id` int(11) DEFAULT NULL,
 	PRIMARY KEY(`id`),
 	UNIQUE KEY `workgroup_id_uindex` (`id`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
@@ -55,6 +56,7 @@ CREATE TABLE `membermission`(
 	`submission_id` int(11) NOT NULL,
 	`status` int(2) NOT NULL,
 	`start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`owner_id` int(11) DEFAULT NULL;
 	PRIMARY KEY(`id`),
 	UNIQUE KEY `membermission_id_uindex`(`id`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;

@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface AccountMapper {
 
-    public int createNewAccount(@Param("username") String username, @Param("password") String password);
+    int createNewAccount(@Param("username") String username, @Param("password") String password);
 
-    public User getAccountByName(@Param("username") String username);
+    User getAccountByName(@Param("username") String username);
 }
