@@ -6,7 +6,6 @@ import java.sql.Timestamp;
 
 public class Mission {
     private int Id;
-    private int type;//
     private String name;
     private String description;
     private int groupId;
@@ -30,9 +29,7 @@ public class Mission {
         Id = id;
     }
 
-    public int getType() {
-        return this.type;
-    }
+
 
     public int getGroupId() {
         return groupId;

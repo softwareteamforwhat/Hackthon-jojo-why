@@ -3,7 +3,6 @@ package com.example.hackathon.po;
 import com.example.hackathon.vo.MemberMissionForm;
 
 public class MemberMission extends Mission{
-    private final int type=2;
     private int SubMissionId;
 
     public void setSubMissionId(int subMissionId) {
