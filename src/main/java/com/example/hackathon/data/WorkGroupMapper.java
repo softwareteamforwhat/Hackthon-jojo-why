@@ -15,9 +15,16 @@ public interface WorkGroupMapper {
 
     /**
      * 修改group的信息(仅限队长)
-     * @param leader_id,groupname,main_mission,status
+     * @param groupId,groupname,main_mission
      */
-    void updateWorkGroup(@Param("leader_id") Integer leader_id,@Param("groupname") String groupname,@Param("main_mission")String main_mission,@Param("status")Integer status);
+    void updateWorkGroup(@Param("groupId") Integer groupId,@Param("groupname") String groupname,@Param("main_mission")String main_mission);
+
+
+    /**
+     * 更改group状态为已完成
+     * @param groupId
+     */
+    void updateStatus(@Param("groupId")Integer groupId);
 
     /**
      * 用groupId获取group信息
