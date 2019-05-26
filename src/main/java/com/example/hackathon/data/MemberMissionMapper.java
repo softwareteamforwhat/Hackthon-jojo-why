@@ -15,6 +15,8 @@ public interface MemberMissionMapper {
      */
     MemberMission selectMemberMissionBySubIdAndUserId(@Param("subMissionId") int subMissionId, @Param("userId") int userId);
 
+
+
     void insertMemberMission(@Param("memberMission") MemberMission memberMission);
 
     /**
@@ -34,4 +36,9 @@ public interface MemberMissionMapper {
      *成功则返回true，失败返回false
      */
     void end(@Param("memberMissionId") int memberMissionId);
+
+    /**
+     * 将某个membermission的own_id 改为指定user的id
+     */
+    void distribute(@Param("userId")Integer userId,@Param("memberMissionId")Integer memberMissionId);
 }

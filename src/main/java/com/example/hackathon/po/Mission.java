@@ -12,6 +12,7 @@ public class Mission {
     private int groupId;
     private Date starttime;
     private Date endtime;
+    private Integer status;
 
 
     public void setForm(Mission mission, MissionForm missionForm){
@@ -65,5 +66,13 @@ public class Mission {
     }
     public void setEndtime(Date endtime) {
         this.endtime = endtime;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }
