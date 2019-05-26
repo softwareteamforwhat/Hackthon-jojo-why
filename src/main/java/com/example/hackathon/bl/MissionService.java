@@ -7,10 +7,16 @@ import com.example.hackathon.vo.SubMissionForm;
 
 
 public interface MissionService {
-    /**
+    /*
     发布任务
      */
+    /**
+     * @param mainmissionForm
+     * @return
+     *
+     */
     ResponseVO addMainMission(MainMissionForm mainmissionForm);
+
     ResponseVO addSubMission(SubMissionForm submissionForm);
     ResponseVO addMemberMission(MemberMissionForm memberMissionForm);
 
