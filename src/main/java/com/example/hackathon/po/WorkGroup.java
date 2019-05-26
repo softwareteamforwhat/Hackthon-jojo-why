@@ -9,7 +9,7 @@ public class WorkGroup {
     private int userId;
     private String groupname;
     private String mainMission;
-    private List<UserVO> userVOList;
+    private List<User> userList;
 
     public int getGroupId() {
         return groupId;
