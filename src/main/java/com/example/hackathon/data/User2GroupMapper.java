@@ -34,5 +34,5 @@ public interface User2GroupMapper {
      * 用户退出某组
      * @param userId,
      */
-    void user
+    void userExitGroup(@Param("userId")Integer userId,@Param("groupId")Integer groupId);
 }
