@@ -11,7 +11,7 @@ public interface WorkGroupMapper {
      * @param lead_id,groupname,man_mission
      * @return groupId
      */
-    int createNewWorkGroup(@Param("lead_id")Integer leadId,@Param("groupname") String groupname,@Param("main_mission")String main_mission);
+    int createNewWorkGroup(@Param("lead_id")Integer lead_id,@Param("groupname") String groupname,@Param("main_mission")String main_mission);
 
     /**
      * 修改group的信息(仅限队长)
