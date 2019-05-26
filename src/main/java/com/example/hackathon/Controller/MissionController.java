@@ -18,6 +18,7 @@ public class MissionController {
     @PostMapping("/addMain")
     public ResponseVO addMainMission(@RequestBody  String mainMission,@RequestBody int groupId){
         return missionService.addMainMission(mainMission,groupId);
+
     }
     @PostMapping("/addSub")
     public ResponseVO addSubMission(@RequestBody SubMissionForm subMissionForm){

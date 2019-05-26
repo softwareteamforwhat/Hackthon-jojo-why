@@ -29,6 +29,6 @@ public class AccountServiceImpl implements AccountService {
         if (null == user || !user.getPassword().equals(userForm.getPassword())) {
             return null;
         }
-        return new UserVO(user);
+        return new UserVO(userForm);
     }
 }

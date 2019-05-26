@@ -10,6 +10,16 @@ public class WorkGroupForm {
     private String mainMission;
     private List<UserVO> userVOList;
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    private int status=0;
+
 
     public String getMainMission() {
         return mainMission;

@@ -11,12 +11,15 @@ public class WorkGroupVO {
     private String mainMission;
     private List<UserVO> userVOList;
 
-    public WorkGroupVO(WorkGroup workGroup) {
-        this.groupId = groupId;
-        this.userId = userId;
-        this.groupname = groupname;
-        this.mainMission = mainMission;
-        this.userVOList = userVOList;
+
+
+    private int status=0;
+    public WorkGroupVO(WorkGroupForm workGroupForm) {
+        this.groupId = workGroupForm.getGroupId();
+        this.userId = workGroupForm.getUserId();
+        this.groupname = workGroupForm.getGroupname();
+        this.mainMission = workGroupForm.getMainMission();
+        this.userVOList = workGroupForm.getUserVOList();
     }
 
 
@@ -60,6 +63,12 @@ public class WorkGroupVO {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+    public int getStatus() {
+        return status;
+    }
 
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
 }
