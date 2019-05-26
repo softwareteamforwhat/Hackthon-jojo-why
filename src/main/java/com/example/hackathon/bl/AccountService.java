@@ -6,7 +6,7 @@ import com.example.hackathon.vo.UserForm;
 import com.example.hackathon.vo.UserVO;
 
 public interface AccountService {
-    public ResponseVO registerAccount(UserForm userForm);//注册
-    public UserVO login(UserForm userForm);//登录
+     ResponseVO registerAccount(UserForm userForm);//注册
+     UserVO login(UserForm userForm);//登录
 
 }
