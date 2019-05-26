@@ -17,5 +17,12 @@ public interface MainMissionMapper {
      */
     MainMission selectMainMissionById(int Id);
 
+    /**
+     * 根据groupId将某一个group的状态改为已经结束
+     * 成功则返回true，失败返回false
+     */
+    boolean end(int groupId);
+
+
 
 }
