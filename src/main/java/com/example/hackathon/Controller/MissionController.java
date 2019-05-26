@@ -1,7 +1,6 @@
 package com.example.hackathon.Controller;
 
 import com.example.hackathon.bl.MissionService;
-import com.example.hackathon.vo.MainMissionForm;
 import com.example.hackathon.vo.MemberMissionForm;
 import com.example.hackathon.vo.ResponseVO;
 import com.example.hackathon.vo.SubMissionForm;
@@ -17,8 +16,8 @@ public class MissionController {
     private MissionService missionService;
 
     @PostMapping("/addMain")
-    public ResponseVO addMainMission(@RequestBody MainMissionForm mainMissionForm){
-        return missionService.addMainMission(mainMissionForm);
+    public ResponseVO addMainMission(@RequestBody  String mainMission,@RequestBody int groupId){
+        return missionService.addMainMission(mainMission,groupId);
     }
     @PostMapping("/addSub")
     public ResponseVO addSubMission(@RequestBody SubMissionForm subMissionForm){
@@ -45,8 +44,8 @@ public class MissionController {
         return missionService.getSubMissionList(groupId);
     }
     @PostMapping("/getMemList")
-    public ResponseVO getMemberMissionList(@RequestBody int groupId,@RequestBody int SubMissionId){
-        return missionService.getMemberMissionList(groupId,SubMissionId);
+    public ResponseVO getMemberMissionList(@RequestBody int SubMissionId){
+        return missionService.getMemberMissionList(SubMissionId);
     }
 
     @PostMapping("/endMain")
