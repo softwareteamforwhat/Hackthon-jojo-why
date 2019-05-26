@@ -2,13 +2,13 @@ package com.example.hackathon.blImpl;
 
 
 import com.example.hackathon.bl.MissionService;
-import com.example.hackathon.data.MainMissionMapper;
 import com.example.hackathon.data.MemberMissionMapper;
 import com.example.hackathon.data.SubMissionMapper;
-import com.example.hackathon.po.MainMission;
+import com.example.hackathon.data.WorkGroupMapper;
 import com.example.hackathon.po.MemberMission;
 import com.example.hackathon.po.Mission;
 import com.example.hackathon.po.SubMission;
+import com.example.hackathon.po.WorkGroup;
 import com.example.hackathon.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,17 +17,16 @@ import java.util.List;
 
 public class MissionServiceImpl implements MissionService {
     @Autowired
-    MainMissionMapper mainmissionMapper;
+    WorkGroupMapper workGroupMapper;
     @Autowired
     SubMissionMapper subMissionMapper;
     @Autowired
     MemberMissionMapper memberMissionMapper;
     @Override
-    public ResponseVO addMainMission(MainMissionForm mainmissionForm) {
+    public ResponseVO addMainMission(String mainmission,int groupId) {
         try {
-            MainMission mainMission = new MainMission();
-            setMission(mainMission, mainmissionForm);
-            mainmissionMapper.insertMainMission(mainMission);
+            WorkGroup workGroup=workGroupMapper.getWorkGroupByGroupId(groupId);
+            workGroupMapper.updateWorkGroup(groupId,workGroup.getGroupname(),mainmission);
             return ResponseVO.buildSuccess();
         }catch (Exception e){
             return ResponseVO.buildFailure("");
@@ -72,8 +71,8 @@ public class MissionServiceImpl implements MissionService {
     @Override
     public ResponseVO getMainMission(int groupId) {
         try{
-            MainMission mainMission=mainmissionMapper.selectMainMissionByGroupId(groupId);
-            return ResponseVO.buildSuccess(mainMission.getForm());
+            WorkGroup workGroup=workGroupMapper.getWorkGroupByGroupId(groupId);
+            return ResponseVO.buildSuccess(workGroup.getMainMission());
 
         }catch (Exception e){
             return ResponseVO.buildFailure("");
@@ -84,7 +83,7 @@ public class MissionServiceImpl implements MissionService {
     @Override
     public ResponseVO getCurrentSubMission(int groupId) {
         try{
-            SubMission subMission=subMissionMapper.selectSubMissionById(mainmissionMapper.selectMainMissionByGroupId(groupId).getCurrentSubMissionId());
+            SubMission subMission=subMissionMapper.selectSubMissionById(workGroupMapper.getWorkGroupByGroupId(groupId).getCurrentSubmissionId());
             return ResponseVO.buildSuccess(subMission.getForm());
         }catch (Exception e){
             return ResponseVO.buildFailure("");
@@ -94,7 +93,7 @@ public class MissionServiceImpl implements MissionService {
     @Override
     public ResponseVO getMemberMission(int groupId, int userId) {
         try{
-            SubMission currentSubMission=subMissionMapper.selectSubMissionById(mainmissionMapper.selectMainMissionByGroupId(groupId).getCurrentSubMissionId());
+            SubMission currentSubMission=subMissionMapper.selectSubMissionById(workGroupMapper.getWorkGroupByGroupId(groupId).getCurrentSubmissionId());
             MemberMission memberMission=memberMissionMapper.selectMemberMissionBySubIdAndUserId(currentSubMission.getId(),userId);
             return ResponseVO.buildSuccess(memberMission.getForm());
         }catch (Exception e){
@@ -136,8 +135,7 @@ public class MissionServiceImpl implements MissionService {
     @Override
     public ResponseVO endMainMission(int groupId) {
         try{
-            boolean judge=mainmissionMapper.end(groupId);
-            if(judge)return ResponseVO.buildSuccess();
+            workGroupMapper.updateStatus(groupId);
             return ResponseVO.buildFailure("");
         }catch (Exception e){
             return ResponseVO.buildFailure("");
@@ -147,7 +145,7 @@ public class MissionServiceImpl implements MissionService {
     @Override
     public ResponseVO endCurrentSubMission(int groupId) {
         try {
-            SubMission currentSubMission = subMissionMapper.selectSubMissionById(mainmissionMapper.selectMainMissionByGroupId(groupId).getCurrentSubMissionId());
+            SubMission currentSubMission = subMissionMapper.selectSubMissionById(workGroupMapper.getWorkGroupByGroupId(groupId).getCurrentSubmissionId());
             boolean judge=subMissionMapper.end(currentSubMission.getId());
             if(judge)return ResponseVO.buildSuccess();
             return ResponseVO.buildFailure("");
@@ -159,7 +157,7 @@ public class MissionServiceImpl implements MissionService {
     @Override
     public ResponseVO endMemberMission(int groupId, int userId) {
         try{
-            SubMission currentSubMission=subMissionMapper.selectSubMissionById(mainmissionMapper.selectMainMissionByGroupId(groupId).getCurrentSubMissionId());
+            SubMission currentSubMission=subMissionMapper.selectSubMissionById(workGroupMapper.getWorkGroupByGroupId(groupId).getCurrentSubmissionId());
             MemberMission memberMission=memberMissionMapper.selectMemberMissionBySubIdAndUserId(currentSubMission.getId(),userId);
             boolean judge=memberMissionMapper.end(memberMission.getId());
             if(judge)return ResponseVO.buildSuccess();

@@ -1,6 +1,7 @@
 package com.example.hackathon.vo;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class MissionForm {
     private int id;
@@ -8,8 +9,8 @@ public class MissionForm {
     private String name;
     private String description;
     private int groupId;
-    private Timestamp starttime;
-    private Timestamp endtime;
+    private Date starttime;
+    private Date endtime;
 
     public int getType() {
         return this.type;
@@ -44,17 +45,17 @@ public class MissionForm {
         this.description = description;
     }
 
-    public Timestamp getStarttime() {
+    public Date getStarttime() {
         return starttime;
     }
-    public void setStarttime(Timestamp t) {
+    public void setStarttime(Date t) {
         this.starttime = t;
     }
 
-    public Timestamp getEndtime() {
+    public Date getEndtime() {
         return endtime;
     }
-    public void setEndtime(Timestamp endtime) {
+    public void setEndtime(Date endtime) {
         this.endtime = endtime;
     }
 }

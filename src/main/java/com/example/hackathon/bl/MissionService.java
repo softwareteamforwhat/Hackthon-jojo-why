@@ -1,6 +1,5 @@
 package com.example.hackathon.bl;
 
-import com.example.hackathon.vo.MainMissionForm;
 import com.example.hackathon.vo.MemberMissionForm;
 import com.example.hackathon.vo.ResponseVO;
 import com.example.hackathon.vo.SubMissionForm;
@@ -11,10 +10,11 @@ public interface MissionService {
     发布任务
      */
     /**
-     * @param mainmissionForm
+     * @param mainmission
+     * @param groupId
      * @return
      */
-    ResponseVO addMainMission(MainMissionForm mainmissionForm);
+    ResponseVO addMainMission(String mainmission,int groupId);
 
     ResponseVO addSubMission(SubMissionForm submissionForm);
     ResponseVO addMemberMission(MemberMissionForm memberMissionForm);

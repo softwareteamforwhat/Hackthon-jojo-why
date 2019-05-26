@@ -3,14 +3,15 @@ package com.example.hackathon.po;
 import com.example.hackathon.vo.MissionForm;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class Mission {
     private int Id;
     private String name;
     private String description;
     private int groupId;
-    private Timestamp starttime;
-    private Timestamp endtime;
+    private Date starttime;
+    private Date endtime;
 
 
     public void setForm(Mission mission, MissionForm missionForm){
@@ -52,17 +53,17 @@ public class Mission {
         this.description = description;
     }
 
-    public Timestamp getStarttime() {
+    public Date getStarttime() {
         return starttime;
     }
-    public void setStarttime(Timestamp t) {
+    public void setStarttime(Date t) {
         this.starttime = t;
     }
 
-    public Timestamp getEndtime() {
+    public Date getEndtime() {
         return endtime;
     }
-    public void setEndtime(Timestamp endtime) {
+    public void setEndtime(Date endtime) {
         this.endtime = endtime;
     }
 }
