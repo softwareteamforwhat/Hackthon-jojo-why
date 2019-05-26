@@ -20,7 +20,7 @@ public class WorkGroupController {
     public ResponseVO addWorkGroup(@RequestBody WorkGroupForm workGroupForm){
         return workGroupService.addWorkGroup(workGroupForm);
     }
-    @RequestMapping(value = "/work_group/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/work_group/all", method = RequestMethod.POST)
     public ResponseVO getWorkGroupById(@RequestBody int id){
         return workGroupService.getWorkGroupById(id);
     }
