@@ -8,8 +8,8 @@ public class WorkGroup {
     private int groupId;
     private int userId;
     private String groupname;
-    private MainMission mainMission;
-    private List<UserVO> userVOList;
+    private String mainMission;
+    private List<User> userList;
 
     public int getGroupId() {
         return groupId;
@@ -43,11 +43,11 @@ public class WorkGroup {
         this.mainMission = mainMission;
     }
 
-    public List<UserVO> getUserVOList() {
-        return userVOList;
+    public List<User> getUserList() {
+        return userList;
     }
 
-    public void setUserVOList(List<UserVO> userVOList) {
-        this.userVOList = userVOList;
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 }
