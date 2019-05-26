@@ -6,10 +6,10 @@ import java.util.List;
 
 public class WorkGroup {
     private int groupId;
-    private int userId;
+    private int leaderId;
     private String groupname;
     private String mainMission;
-    private List<User> userList;
+
     /**
      * o表示正在进行中
      * 1表示已结束
@@ -25,11 +25,11 @@ public class WorkGroup {
     }
 
     public int getUserId() {
-        return userId;
+        return leaderId;
     }
 
     public void setUserId(int userId) {
-        this.userId = userId;
+        this.leaderId = userId;
     }
 
     public String getGroupname() {
@@ -38,14 +38,6 @@ public class WorkGroup {
 
     public void setGroupname(String groupname) {
         this.groupname = groupname;
-    }
-
-    public List<User> getUserList() {
-        return userList;
-    }
-
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
     }
 
     public String getMainMission() {

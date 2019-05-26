@@ -5,6 +5,19 @@
         insert into workgroup(workgroupname,lead_id,main_mission,status,start_time)
         VALUES(#{groupname},#{leader_id},#{main_mission},0,CURRENT_TIMESTAMP)
     </insert>
+
+    <update id="updateWorkGroup">
+        update workgroup set workgroupname=#{groupname},main_mission=#{main_mission},status=#{status} WHERE leader_id=#{leader_id};
+    </update>
+
+    <select id="getWorkGroupByGroupId" resultType="WorkGroupResultMap">
+        select * from workgroup as wg where wg.id=#{groudId}
+    </select>
     
-    <resultMap id="" type=""
+    <resultMap id="WorkGroupResultMap" type="com.example.hackathon.po.WorkGroup">
+        <id column="id" property="groupId"></id>
+        <result column="leader_id" property="leaderId"></result>
+        <result column="workgroupname" property="groupname"></result>
+        <result column="main_mission" property="mainMission"></result>
+    </resultMap>
 </mapper>
