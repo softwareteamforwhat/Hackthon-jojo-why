@@ -14,10 +14,10 @@ public class WorkGroup {
     private Date endDate;
 
     /**
-     * o表示正在进行中
+     * 0表示正在进行中
      * 1表示已结束
      */
-    private int status;
+    private int status=0;
 
     public int getGroupId() {
         return groupId;

@@ -5,6 +5,7 @@ import com.example.hackathon.data.User2GroupMapper;
 import com.example.hackathon.data.WorkGroupMapper;
 import com.example.hackathon.po.WorkGroup;
 import com.example.hackathon.vo.ResponseVO;
+import com.example.hackathon.vo.UserForm;
 import com.example.hackathon.vo.WorkGroupForm;
 import com.example.hackathon.vo.WorkGroupVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,18 +36,21 @@ public class WorkGroupServiceImpl implements WorkGroupService {
     @Override
     public ResponseVO updateWorkGroup(WorkGroupForm updateWorkGroupForm) {
         try {
-            //TODO 数据库修改工作组（初步为增加组员）
+            int lead_id=updateWorkGroupForm.getUserId();
+            String groupname=updateWorkGroupForm.getGroupname();
+            String main_mission=updateWorkGroupForm.getMainMission();
+            workGroupMapper.updateWorkGroup(lead_id,groupname,main_mission);
             return ResponseVO.buildSuccess();
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseVO.buildFailure("增加组员失败");
+            return ResponseVO.buildFailure("修改工作组信息失败");
         }
     }
 
     @Override
     public ResponseVO removeWorkGroup(int workGroupId) {
         try {
-            //TODO 数据库更改工作组状态（实现删除效果）
+            workGroupMapper.updateStatus(workGroupId);
             return ResponseVO.buildSuccess();
         } catch (Exception e) {
             e.printStackTrace();
@@ -54,24 +58,37 @@ public class WorkGroupServiceImpl implements WorkGroupService {
         }
     }
 
+
     @Override
-    public ResponseVO getWorkGroupById() {
-        try {
-            return null;
-            //TODO
-//            return ResponseVO.buildSuccess(changeList(workGroupMapper.selectAllMovie()));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseVO.buildFailure("获取工作组失败");
-        }
+    public ResponseVO getWorkGroupById(int userId) {
+        return null;//TODO
+//        try {
+//            List<WorkGroup> reslist = user2GroupMapper.getGroupByUser(userId);
+//
+//                if(workGroup != null){
+//                    return ResponseVO.buildSuccess(new WorkGroupVO(workGroup));
+//                }else{
+//                    return ResponseVO.buildSuccess(null);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return ResponseVO.buildFailure("获取工作组失败");
+//        }
     }
 
 
-    private List<WorkGroupVO> changeList(List<WorkGroup> workGroupList){
-        List<WorkGroupVO> WorkGroupVOList = new ArrayList<>();
-        for(WorkGroup workGroup : workGroupList){
-            WorkGroupVOList.add(new WorkGroupVO(workGroup));
+
+
+    @Override
+    public ResponseVO addMember(UserForm userForm, WorkGroupForm workGroupForm) {
+        try {
+            int userId=userForm.getUserId();
+            int groupId=workGroupForm.getGroupId();
+            user2GroupMapper.userJoinGroup(userId,groupId);
+            return ResponseVO.buildSuccess();
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseVO.buildFailure("增加成员失败");
         }
-        return WorkGroupVOList;
     }
 }

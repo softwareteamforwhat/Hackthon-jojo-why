@@ -7,10 +7,10 @@ public class UserVO {
     private String username;
     private String password;
 
-    public UserVO(User user){
-        this.id = user.getId();
-        this.username = user.getUsername();
-        this.password = user.getPassword();
+    public UserVO(UserForm userForm){
+        this.id = userForm.getUserId();
+        this.username = userForm.getUsername();
+        this.password = userForm.getPassword();
     }
 
     public Integer getId() {

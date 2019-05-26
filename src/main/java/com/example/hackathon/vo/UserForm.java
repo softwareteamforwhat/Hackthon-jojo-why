@@ -1,6 +1,15 @@
 package com.example.hackathon.vo;
 
 public class UserForm {
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    private int userId;
 
     private String username;
 
