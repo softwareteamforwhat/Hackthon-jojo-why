@@ -3,6 +3,8 @@
 <mapper namespace="com.example.hackathon.data.WorkGroupMapper">
     <insert id="createNewWorkGroup" useGeneratedKeys="true" keyProperty="id">
         insert into workgroup(workgroupname,lead_id,main_mission,status,start_time)
-        VALUES(#{{leader_id}})
+        VALUES(#{groupname},#{leader_id},#{main_mission},0,CURRENT_TIMESTAMP)
     </insert>
+    
+    <resultMap id="" type=""
 </mapper>

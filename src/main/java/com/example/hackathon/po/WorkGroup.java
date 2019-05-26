@@ -10,6 +10,11 @@ public class WorkGroup {
     private String groupname;
     private String mainMission;
     private List<User> userList;
+    /**
+     * o表示正在进行中
+     * 1表示已结束
+     */
+    private int status;
 
     public int getGroupId() {
         return groupId;
@@ -35,19 +40,27 @@ public class WorkGroup {
         this.groupname = groupname;
     }
 
-    public MainMission getMainMission() {
-        return mainMission;
-    }
-
-    public void setMainMission(MainMission mainMission) {
-        this.mainMission = mainMission;
-    }
-
     public List<User> getUserList() {
         return userList;
     }
 
     public void setUserList(List<User> userList) {
         this.userList = userList;
+    }
+
+    public String getMainMission() {
+        return mainMission;
+    }
+
+    public void setMainMission(String mainMission) {
+        this.mainMission = mainMission;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }
