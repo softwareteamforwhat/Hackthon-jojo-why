@@ -5,8 +5,7 @@ CREATE TABLE `user`(
 	`username` varchar(50) NOT NULL,
 	`password` varchar(50) NOT NULL,
 	PRIMARY KEY(`id`),
-	UNIQUE KEY `user_id_uindex` (`id`),
-	UNIQUE KEY `user_username_uindex` (`username`)
+	UNIQUE KEY `user_id_uindex` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `user` VALUES (NULL,'testuser1','123456'),(NULL,'testuser2','123456'),(NULL,'testuser3','123456');
