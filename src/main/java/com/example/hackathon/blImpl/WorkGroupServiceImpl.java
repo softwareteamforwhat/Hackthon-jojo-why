@@ -62,9 +62,13 @@ public class WorkGroupServiceImpl implements WorkGroupService {
     public ResponseVO getWorkGroupById(int userId) {
 
         try {
-            List<WorkGroup> reslist = user2GroupMapper.getGroupByUser(userId);
+            List<Integer> reslist = user2GroupMapper.getGroupIdByUserId(userId);
+            List<WorkGroup> wlist=new ArrayList<WorkGroup>();
+            for(int i=0;i< reslist.size();i++){
+                wlist.add(user2GroupMapper.getGroupByGroupId(reslist.get(i)));
+            }
 
-            return  ResponseVO.buildSuccess(reslist);
+            return  ResponseVO.buildSuccess(wlist);
 
         } catch (Exception e) {
             e.printStackTrace();
