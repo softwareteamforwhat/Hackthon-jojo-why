@@ -3,7 +3,8 @@ package com.example.hackathon.po;
 import com.example.hackathon.vo.MemberMissionForm;
 import com.example.hackathon.vo.MissionForm;
 
-import java.util.Date;
+import java.sql.Date;
+
 
 public class MemberMission{
     private int subMissionId;
@@ -11,8 +12,8 @@ public class MemberMission{
     private String name;
     private String description;
     //private int groupId;
-    private Date starttime;
-    private Date endtime;
+    private Date startDate;
+    private Date endDate;
     private Integer status=0;
     private Integer owner_id=null;
 
@@ -58,19 +59,19 @@ public class MemberMission{
     */
 
     public Date getStarttime() {
-        return starttime;
+        return startDate;
     }
 
     public void setStarttime(Date starttime) {
-        this.starttime = starttime;
+        this.startDate = starttime;
     }
 
     public Date getEndtime() {
-        return endtime;
+        return endDate;
     }
 
     public void setEndtime(Date endtime) {
-        this.endtime = endtime;
+        this.endDate = endtime;
     }
 
     public Integer getStatus() {

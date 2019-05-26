@@ -28,10 +28,7 @@ public class AccountServiceImpl implements AccountService {
     public UserVO login(UserForm userForm) {
         User user = accountMapper.getAccountByName(userForm.getUsername());
         System.out.println("userForm.getUsername():"+userForm.getUsername());
-        if(user==null){
-            System.out.println("null");
-            return new UserVO(userForm);
-        }
+
         System.out.println(user.getPassword()+":"+userForm.getPassword());
 
         if (null == user || !user.getPassword().equals(userForm.getPassword())) {

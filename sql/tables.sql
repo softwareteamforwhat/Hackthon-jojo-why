@@ -5,7 +5,8 @@ CREATE TABLE `user`(
 	`username` varchar(50) NOT NULL,
 	`password` varchar(50) NOT NULL,
 	PRIMARY KEY(`id`),
-	UNIQUE KEY `user_id_uindex` (`id`)
+	UNIQUE KEY `user_id_uindex` (`id`),
+	UNIQUE KEY `user_username_uindex` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `user` VALUES (NULL,'testuser1','123456'),(NULL,'testuser2','123456'),(NULL,'testuser3','123456');
@@ -14,16 +15,16 @@ INSERT INTO `user` VALUES (NULL,'testuser1','123456'),(NULL,'testuser2','123456'
 DROP TABLE IF EXISTS `workgroup`;
 
 CREATE TABLE `workgroup`(
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`workgroupname` varchar(50) NOT NULL,
-	`leader_id` int(11) NOT NULL,
-	`main_mission` varchar(50) NOT NULL,
+	`groupid` int(11) NOT NULL AUTO_INCREMENT,
+	`groupname` varchar(50) NOT NULL,
+	`leaderId` int(11) NOT NULL,
+	`mainMission` varchar(50) NOT NULL,
 	`status` int(2) NOT NULL,
-	`start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`end_time` timestamp DEFAULT NULL,
-	`current_submission_id` int(11) DEFAULT NULL,
-	PRIMARY KEY(`id`),
-	UNIQUE KEY `workgroup_id_uindex` (`id`)
+	`startDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`endDate` timestamp,
+	`currentSubmissionId` int(11) DEFAULT NULL,
+	PRIMARY KEY(`groupId`),
+	UNIQUE KEY `workgroup_id_uindex` (`groupId`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `workgroup` VALUES (NULL,'testgroup1','完成任务一',0,CURRENT_TIMESTAMP),(NULL,'testgroup2','完成任务二',0,CURRENT_TIMESTAMP),(NULL,'testgroup3','完成任务三',0,CURRENT_TIMESTAMP);
@@ -34,12 +35,12 @@ DROP TABLE IF EXISTS `submission`;
 
 CREATE TABLE `submission`(
 	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`title` varchar(255) DEFAULT NULL,
-	`detail` text,
-	`group_id` int(11) NOT NULL,
+	`name` varchar(255) DEFAULT NULL,
+	`description` text,
+	`groupId` int(11) NOT NULL,
 	`status` int(2) NOT NULL,
-	`start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`end_time` timestamp DEFAULT NULL,
+	`startDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`endDate` timestamp,
 	PRIMARY KEY(`id`),
 	UNIQUE KEY `submission_id_uindex`(`id`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
@@ -52,12 +53,12 @@ DROP TABLE IF EXISTS `membermission`;
 
 CREATE TABLE `membermission`(
 	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`title` varchar(255) DEFAULT NULL,
-	`detail` text,
-	`submission_id` int(11) NOT NULL,
+	`name` varchar(255) DEFAULT NULL,
+	`description` text,
+	`subMissionId` int(11) NOT NULL,
 	`status` int(2) NOT NULL,
-	`start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`end_time` timestamp DEFAULT NULL,
+	`startDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`endDate` timestamp,
 	`owner_id` int(11) DEFAULT NULL,
 	PRIMARY KEY(`id`),
 	UNIQUE KEY `membermission_id_uindex`(`id`)
@@ -72,3 +73,16 @@ CREATE TABLE `user2group`(
 	 `group_id` int(11) NOT NULL,
 	 PRIMARY KEY(`user_id`,`group_id`)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+
+
+INSERT INTO user2group (user_id,group_id) VALUES (1,1);
+
+CREATE TABLE `message`{
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `sender_id` int(11) NOT NULL,
+    `receiver_id` int(11) NOT NULL,
+    `data` varchar(50),
+    PRIMARY KEY(`id`)
+}ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO message (id,sender_id,receiver_id,data)values(1,1,2,"1给2的message");

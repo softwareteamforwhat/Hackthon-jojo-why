@@ -6,13 +6,6 @@ public class UserForm {
         this.password=password;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     private int userId;
 
@@ -34,6 +27,14 @@ public class UserForm {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
 }

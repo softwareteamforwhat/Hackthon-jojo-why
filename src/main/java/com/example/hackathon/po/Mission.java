@@ -1,15 +1,17 @@
 package com.example.hackathon.po;
 
 import com.example.hackathon.vo.MissionForm;
-import java.util.Date;
+
+import java.sql.Date;
+
 
 public class Mission {
     private int id;
     private String name;
     private String description;
     private int groupId;
-    private Date starttime;
-    private Date endtime;
+    private Date startDate;
+    private Date endDate;
     private Integer status=0;
 
 
@@ -53,17 +55,17 @@ public class Mission {
     }
 
     public Date getStarttime() {
-        return starttime;
+        return startDate;
     }
     public void setStarttime(Date t) {
-        this.starttime = t;
+        this.startDate = t;
     }
 
     public Date getEndtime() {
-        return endtime;
+        return endDate;
     }
     public void setEndtime(Date endtime) {
-        this.endtime = endtime;
+        this.endDate = endtime;
     }
 
     public Integer getStatus() {

@@ -3,7 +3,6 @@ package com.example.hackathon.data;
 import com.example.hackathon.po.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Mapper
 public interface AccountMapper {

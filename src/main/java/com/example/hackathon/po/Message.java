@@ -1,9 +1,10 @@
 package com.example.hackathon.po;
 
 public class Message {
-    int senderId;
-    int receiverId;
-    String data;
+    private Integer id;
+    private int senderId;
+    private int receiverId;
+    private String data;
 
     public int getReceiverId() {
         return receiverId;

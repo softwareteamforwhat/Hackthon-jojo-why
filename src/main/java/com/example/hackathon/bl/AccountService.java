@@ -6,7 +6,18 @@ import com.example.hackathon.vo.UserForm;
 import com.example.hackathon.vo.UserVO;
 
 public interface AccountService {
-     ResponseVO registerAccount(UserForm userForm);//注册
-     UserVO login(UserForm userForm);//登录
+     /**
+      * 注册
+      * @param userForm
+      * @return
+      */
+     ResponseVO registerAccount(UserForm userForm);
+
+     /**
+      * 登陆
+      * @param userForm
+      * @return
+      */
+     UserVO login(UserForm userForm);
 
 }
