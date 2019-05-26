@@ -7,4 +7,8 @@ public class MemberMissionForm extends MissionForm {
     public int getSubMissionId() {
         return SubMissionId;
     }
+
+    public void setSubMissionId(int subMissionId) {
+        SubMissionId = subMissionId;
+    }
 }
