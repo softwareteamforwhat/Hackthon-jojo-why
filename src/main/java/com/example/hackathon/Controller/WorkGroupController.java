@@ -13,9 +13,25 @@ import org.springframework.web.bind.annotation.RestController;
 public class WorkGroupController {
     @Autowired
     private WorkGroupService workGroupService;
-    @RequestMapping(value = "/workgroup/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/work_group/add", method = RequestMethod.POST)
     public ResponseVO addWorkGroup(@RequestBody WorkGroupForm workGroupForm){
         return workGroupService.addWorkGroup(workGroupForm);
     }
+    @RequestMapping(value = "/work_group/all", method = RequestMethod.GET)
+    public ResponseVO getAllWorkGroup(){
+        return workGroupService.getAllWorkGroup();
+    }
+    @RequestMapping(value = "/work_group/other", method = RequestMethod.GET)
+    public ResponseVO getOtherWorkGroup(){
+        return workGroupService.getOtherWorkGroup();
+    }
+    @RequestMapping(value = "/work_group/off",method = RequestMethod.POST)
+    public ResponseVO removeGroup(@RequestBody int id){
+        return workGroupService.removeWorkGroup(id);
+    }
 
+    @RequestMapping(value = "/work_group/update",method = RequestMethod.POST)
+    public ResponseVO updateGroup(@RequestBody WorkGroupForm  workGroupForm){
+        return workGroupService.updateWorkGroup(workGroupForm);
+    }
 }
