@@ -6,19 +6,21 @@ import com.example.hackathon.vo.SubMissionForm;
 
 
 public interface MissionService {
-    /*
-    发布任务
-     */
     /**
-     * @param mainmission
-     * @param groupId
-     * @return
+     * 发布任务
      */
     ResponseVO addMainMission(String mainmission,int groupId);
-
     ResponseVO addSubMission(SubMissionForm submissionForm);
     ResponseVO addMemberMission(MemberMissionForm memberMissionForm);
 
+
+    /**
+     *
+     * @param MemberMissionId
+     * @param userId
+     * @return
+     */
+    ResponseVO distributeMemberMission(int MemberMissionId,int userId);//某个成员为自己选择一个MemberMission
     /**
      获取任务信息
      */

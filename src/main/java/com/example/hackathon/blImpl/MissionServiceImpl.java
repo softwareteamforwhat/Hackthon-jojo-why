@@ -59,6 +59,15 @@ public class MissionServiceImpl implements MissionService {
         }
     }
 
+    @Override
+    public ResponseVO distributeMemberMission(int MemberMissionId, int userId) {
+        try {
+            memberMissionMapper.distribute(userId,MemberMissionId);
+            return ResponseVO.buildSuccess();
+        }catch (Exception e){
+            return ResponseVO.buildFailure("");
+        }
+    }
 
     private void setMission(Mission mission, MissionForm missionForm){
         mission.setName(missionForm.getName());
