@@ -1,5 +1,7 @@
 package com.example.hackathon.vo;
 
+import com.example.hackathon.po.WorkGroup;
+
 import java.util.List;
 
 public class WorkGroupVO {
@@ -8,6 +10,15 @@ public class WorkGroupVO {
     private String groupname;
     private String mainMission;
     private List<UserVO> userVOList;
+
+    public WorkGroupVO(WorkGroup workGroup) {
+        this.groupId = groupId;
+        this.userId = userId;
+        this.groupname = groupname;
+        this.mainMission = mainMission;
+        this.userVOList = userVOList;
+    }
+
 
     public String getMainMission() {
         return mainMission;
