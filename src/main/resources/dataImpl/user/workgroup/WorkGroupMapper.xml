@@ -13,7 +13,8 @@
     <select id="getWorkGroupByGroupId" resultType="WorkGroupResultMap">
         select * from workgroup as wg where wg.id=#{groudId}
     </select>
-    
+
+
     <resultMap id="WorkGroupResultMap" type="com.example.hackathon.po.WorkGroup">
         <id column="id" property="groupId"></id>
         <result column="leader_id" property="leaderId"></result>
