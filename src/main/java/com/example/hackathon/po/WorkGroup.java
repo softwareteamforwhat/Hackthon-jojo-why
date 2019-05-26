@@ -35,11 +35,11 @@ public class WorkGroup {
         this.groupname = groupname;
     }
 
-    public String getMainMission() {
+    public MainMission getMainMission() {
         return mainMission;
     }
 
-    public void setMainMission(String mainMission) {
+    public void setMainMission(MainMission mainMission) {
         this.mainMission = mainMission;
     }
 
