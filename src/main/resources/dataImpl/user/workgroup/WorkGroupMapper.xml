@@ -7,12 +7,16 @@
     </insert>
 
     <update id="updateWorkGroup">
-        update workgroup set workgroupname=#{groupname},main_mission=#{main_mission},status=#{status} WHERE leader_id=#{leader_id};
+        update workgroup set workgroupname=#{groupname},main_mission=#{main_mission},status=#{status} WHERE id=#{groupId};
     </update>
 
     <select id="getWorkGroupByGroupId" resultType="WorkGroupResultMap">
         select * from workgroup as wg where wg.id=#{groudId}
     </select>
+
+    <update id="updateStatus">
+        update workgroup set status=1 where id=#{groupId};
+    </update>
 
 
     <resultMap id="WorkGroupResultMap" type="com.example.hackathon.po.WorkGroup">
