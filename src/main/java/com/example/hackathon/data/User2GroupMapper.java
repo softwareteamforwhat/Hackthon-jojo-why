@@ -28,10 +28,11 @@ public interface User2GroupMapper {
      * @param userId,gou
      */
 
+    void userJoinGroup(@Param("userId") Integer userId,@Param("groupId") Integer groupId);
 
     /**
      * 用户退出某组
      * @param userId,
      */
-
+    void user
 }

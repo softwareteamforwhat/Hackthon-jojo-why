@@ -7,7 +7,7 @@
     </insert>
 
     <update id="updateWorkGroup">
-        update workgroup set workgroupname=#{groupname},main_mission=#{main_mission},status=#{status} WHERE id=#{groupId};
+        update workgroup set workgroupname=#{groupname},main_mission=#{main_mission} WHERE id=#{groupId};
     </update>
 
     <select id="getWorkGroupByGroupId" resultType="WorkGroupResultMap">
