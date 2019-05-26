@@ -3,6 +3,7 @@ package com.example.hackathon.vo;
 import java.sql.Timestamp;
 
 public class MissionForm {
+    private int id;
     private int type;//
     private String name;
     private String description;
@@ -12,6 +13,14 @@ public class MissionForm {
 
     public int getType() {
         return this.type;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getGroupId() {

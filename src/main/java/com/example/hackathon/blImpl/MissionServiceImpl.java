@@ -3,69 +3,170 @@ package com.example.hackathon.blImpl;
 
 import com.example.hackathon.bl.MissionService;
 import com.example.hackathon.data.MainMissionMapper;
-import com.example.hackathon.vo.MainMissionForm;
-import com.example.hackathon.vo.MemberMissionForm;
-import com.example.hackathon.vo.ResponseVO;
-import com.example.hackathon.vo.SubMissionForm;
+import com.example.hackathon.data.MemberMissionMapper;
+import com.example.hackathon.data.SubMissionMapper;
+import com.example.hackathon.po.MainMission;
+import com.example.hackathon.po.MemberMission;
+import com.example.hackathon.po.Mission;
+import com.example.hackathon.po.SubMission;
+import com.example.hackathon.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MissionServiceImpl implements MissionService {
     @Autowired
-    MainMissionMapper missionMapper;
+    MainMissionMapper mainmissionMapper;
+    @Autowired
+    SubMissionMapper subMissionMapper;
+    @Autowired
+    MemberMissionMapper memberMissionMapper;
     @Override
     public ResponseVO addMainMission(MainMissionForm mainmissionForm) {
-
-        return null;
+        try {
+            MainMission mainMission = new MainMission();
+            setMission(mainMission, mainmissionForm);
+            mainmissionMapper.insertMainMission(mainMission);
+            return ResponseVO.buildSuccess();
+        }catch (Exception e){
+            return ResponseVO.buildFailure("");
+        }
     }
 
     @Override
     public ResponseVO addSubMission(SubMissionForm submissionForm) {
-        return null;
+        try {
+            SubMission subMission = new SubMission();
+            setMission(subMission, submissionForm);
+            subMissionMapper.insertSubMission(subMission);
+            return ResponseVO.buildSuccess();
+        }catch (Exception e){
+            return ResponseVO.buildFailure("");
+        }
+
     }
 
     @Override
     public ResponseVO addMemberMission(MemberMissionForm memberMissionForm) {
-        return null;
+        try {
+            MemberMission memberMission = new MemberMission();
+            setMission(memberMission, memberMissionForm);
+            memberMissionMapper.insertMemberMission(memberMission);
+            return ResponseVO.buildSuccess();
+        }catch (Exception e){
+            return ResponseVO.buildFailure("");
+        }
+    }
+
+
+    private void setMission(Mission mission, MissionForm missionForm){
+        mission.setName(missionForm.getName());
+        mission.setGroupId(missionForm.getGroupId());
+        mission.setDescription(missionForm.getDescription());
+        mission.setStarttime(missionForm.getStarttime());
+        mission.setEndtime(missionForm.getEndtime());
+
     }
 
     @Override
     public ResponseVO getMainMission(int groupId) {
-        return null;
+        try{
+            MainMission mainMission=mainmissionMapper.selectMainMissionByGroupId(groupId);
+            return ResponseVO.buildSuccess(mainMission.getForm());
+
+        }catch (Exception e){
+            return ResponseVO.buildFailure("");
+        }
+
     }
 
     @Override
     public ResponseVO getCurrentSubMission(int groupId) {
-        return null;
+        try{
+            SubMission subMission=subMissionMapper.selectSubMissionById(mainmissionMapper.selectMainMissionByGroupId(groupId).getCurrentSubMissionId());
+            return ResponseVO.buildSuccess(subMission.getForm());
+        }catch (Exception e){
+            return ResponseVO.buildFailure("");
+        }
     }
 
     @Override
     public ResponseVO getMemberMission(int groupId, int userId) {
-        return null;
+        try{
+            SubMission currentSubMission=subMissionMapper.selectSubMissionById(mainmissionMapper.selectMainMissionByGroupId(groupId).getCurrentSubMissionId());
+            MemberMission memberMission=memberMissionMapper.selectMemberMissionBySubIdAndUserId(currentSubMission.getId(),userId);
+            return ResponseVO.buildSuccess(memberMission.getForm());
+        }catch (Exception e){
+            return ResponseVO.buildFailure("");
+        }
     }
 
     @Override
     public ResponseVO getSubMissionList(int groupId) {
-        return null;
+        try{
+            List<SubMission> subMissionList=subMissionMapper.selectSubMissionlistByGroupId(groupId);
+            List<SubMissionForm> subMissionFormList=new ArrayList<>();
+            for(SubMission subMission:subMissionList){
+                subMissionFormList.add(subMission.getForm());
+            }
+            return ResponseVO.buildSuccess(subMissionFormList);
+        }catch (Exception e){
+            return ResponseVO.buildFailure("");
+        }
     }
 
     @Override
-    public ResponseVO getMemberMissionList(int groupId, int subMissionId) {
-        return null;
+    public ResponseVO getMemberMissionList(int subMissionId) {
+        try{
+            List<MemberMission> memberMissionlist=memberMissionMapper.selectMemberMissionListBySubId(subMissionId);
+            List<MemberMissionForm> memberMissionFormList=new ArrayList<>();
+            for(MemberMission memberMission:memberMissionlist){
+                memberMissionFormList.add(memberMission.getForm());
+            }
+            return ResponseVO.buildSuccess(memberMissionFormList);
+        }catch (Exception e){
+            return ResponseVO.buildFailure("");
+        }
     }
+
+
+
 
     @Override
     public ResponseVO endMainMission(int groupId) {
-        return null;
+        try{
+            boolean judge=mainmissionMapper.end(groupId);
+            if(judge)return ResponseVO.buildSuccess();
+            return ResponseVO.buildFailure("");
+        }catch (Exception e){
+            return ResponseVO.buildFailure("");
+        }
     }
 
     @Override
     public ResponseVO endCurrentSubMission(int groupId) {
-        return null;
+        try {
+            SubMission currentSubMission = subMissionMapper.selectSubMissionById(mainmissionMapper.selectMainMissionByGroupId(groupId).getCurrentSubMissionId());
+            boolean judge=subMissionMapper.end(currentSubMission.getId());
+            if(judge)return ResponseVO.buildSuccess();
+            return ResponseVO.buildFailure("");
+        }catch (Exception e){
+            return ResponseVO.buildFailure("");
+        }
     }
 
     @Override
     public ResponseVO endMemberMission(int groupId, int userId) {
-        return null;
+        try{
+            SubMission currentSubMission=subMissionMapper.selectSubMissionById(mainmissionMapper.selectMainMissionByGroupId(groupId).getCurrentSubMissionId());
+            MemberMission memberMission=memberMissionMapper.selectMemberMissionBySubIdAndUserId(currentSubMission.getId(),userId);
+            boolean judge=memberMissionMapper.end(memberMission.getId());
+            if(judge)return ResponseVO.buildSuccess();
+            return ResponseVO.buildFailure("");
+        }catch (Exception e){
+            return ResponseVO.buildFailure("");
+        }
     }
 
 

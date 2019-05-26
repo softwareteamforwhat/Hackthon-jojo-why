@@ -1,14 +1,34 @@
 package com.example.hackathon.po;
 
-import java.security.Timestamp;
+import com.example.hackathon.vo.MissionForm;
+
+import java.sql.Timestamp;
 
 public class Mission {
+    private int Id;
     private int type;//
     private String name;
     private String description;
     private int groupId;
     private Timestamp starttime;
     private Timestamp endtime;
+
+
+    public void setForm(Mission mission, MissionForm missionForm){
+        missionForm.setId(mission.getId());
+        missionForm.setName(mission.getName());
+        missionForm.setGroupId(mission.getGroupId());
+        missionForm.setDescription(mission.getDescription());
+        missionForm.setStarttime(mission.getStarttime());
+        missionForm.setEndtime(mission.getEndtime());
+    }
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
 
     public int getType() {
         return this.type;
