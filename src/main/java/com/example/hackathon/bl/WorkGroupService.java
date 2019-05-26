@@ -6,9 +6,9 @@ import com.example.hackathon.vo.WorkGroupVO;
 
 public interface WorkGroupService {
 
-    public ResponseVO addWorkGroup(WorkGroupForm addWorkGroupForm);
-    public ResponseVO updateWorkGroup(WorkGroupForm updateWorkGroupForm);//增加组员
-    public ResponseVO removeWorkGroup(int workGroupId);
-    public ResponseVO getAllWorkGroup();
-    public ResponseVO getOtherWorkGroup();
+    ResponseVO addWorkGroup(WorkGroupForm addWorkGroupForm);
+    ResponseVO updateWorkGroup(WorkGroupForm updateWorkGroupForm);//增加组员
+    ResponseVO removeWorkGroup(int workGroupId);
+    ResponseVO getAllWorkGroup();
+    ResponseVO getOtherWorkGroup();
 }

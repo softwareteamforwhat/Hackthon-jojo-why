@@ -8,10 +8,10 @@ import org.apache.ibatis.annotations.Param;
 public interface WorkGroupMapper {
     /**
      * 用队长的id创建组
-     * @param lead_id,groupname,man_mission
+     * @param leader_id,groupname,man_mission
      * @return groupId
      */
-    int createNewWorkGroup(@Param("lead_id")Integer leadId,@Param("groupname") String groupname,@Param("main_mission")String main_mission);
+    int createNewWorkGroup(@Param("leader_id")Integer leader_id,@Param("groupname") String groupname,@Param("main_mission")String main_mission);
 
     /**
      * 修改group的信息(仅限队长)

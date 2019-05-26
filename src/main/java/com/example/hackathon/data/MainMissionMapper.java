@@ -1,7 +1,5 @@
 package com.example.hackathon.data;
 
-import com.example.hackathon.po.MainMission;
-
 public interface MainMissionMapper {
     /**
      * 根据groupId查找对应的MainMission
