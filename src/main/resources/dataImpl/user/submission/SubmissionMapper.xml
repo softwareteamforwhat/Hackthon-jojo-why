@@ -13,6 +13,9 @@
     <select id="selectSubMissionById" resultType="SubmissionResultMap">
         select * from submission where id=#{id}
     </select>
+    <update id="end">
+        update submission set status=1 where id=#{id}
+    </update>
 
     <resultMap id="SubmissionResultMap" type="com.example.hackathon.po.SubMission">
         <id column="id" property="id"></id>
