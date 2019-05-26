@@ -147,9 +147,7 @@ public class MissionServiceImpl implements MissionService {
     public ResponseVO endCurrentSubMission(int groupId) {
         try {
             SubMission currentSubMission = subMissionMapper.selectSubMissionById(workGroupMapper.getWorkGroupByGroupId(groupId).getCurrentSubmissionId());
-            boolean judge=subMissionMapper.end(currentSubMission.getId());
-            if(judge)return ResponseVO.buildSuccess();
-            return ResponseVO.buildFailure("");
+            return ResponseVO.buildSuccess();
         }catch (Exception e){
             return ResponseVO.buildFailure("");
         }
@@ -160,9 +158,7 @@ public class MissionServiceImpl implements MissionService {
         try{
             SubMission currentSubMission=subMissionMapper.selectSubMissionById(workGroupMapper.getWorkGroupByGroupId(groupId).getCurrentSubmissionId());
             MemberMission memberMission=memberMissionMapper.selectMemberMissionBySubIdAndUserId(currentSubMission.getId(),userId);
-            boolean judge=memberMissionMapper.end(memberMission.getId());
-            if(judge)return ResponseVO.buildSuccess();
-            return ResponseVO.buildFailure("");
+            return ResponseVO.buildSuccess();
         }catch (Exception e){
             return ResponseVO.buildFailure("");
         }

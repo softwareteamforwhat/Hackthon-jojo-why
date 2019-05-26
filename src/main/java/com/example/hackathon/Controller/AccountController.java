@@ -6,10 +6,7 @@ import com.example.hackathon.vo.ResponseVO;
 import com.example.hackathon.vo.UserForm;
 import com.example.hackathon.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -20,7 +17,8 @@ public class AccountController {
     @Autowired
     private AccountServiceImpl accountService;
     @PostMapping("/login")
-    public ResponseVO login(@RequestBody UserForm userForm, HttpSession session){
+    public ResponseVO login(@RequestParam("username")String username,@RequestParam("password") String password, HttpSession session){
+        UserForm userForm=new UserForm(username,password);
         UserVO user = accountService.login(userForm);
         if(user==null){
             return ResponseVO.buildFailure(ACCOUNT_INFO_ERROR);
@@ -31,7 +29,8 @@ public class AccountController {
         return ResponseVO.buildSuccess(user);
     }
     @PostMapping("/register")
-    public ResponseVO registerAccount(@RequestBody UserForm userForm){
+    public ResponseVO registerAccount(@RequestParam("username") String username,@RequestParam("password") String password){
+        UserForm userForm=new UserForm(username,password);
         return accountService.registerAccount(userForm);
     }
 
