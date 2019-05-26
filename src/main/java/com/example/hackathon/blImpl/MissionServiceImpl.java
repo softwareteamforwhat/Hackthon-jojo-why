@@ -11,10 +11,11 @@ import com.example.hackathon.po.SubMission;
 import com.example.hackathon.po.WorkGroup;
 import com.example.hackathon.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class MissionServiceImpl implements MissionService {
     @Autowired
     WorkGroupMapper workGroupMapper;
