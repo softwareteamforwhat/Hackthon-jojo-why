@@ -10,11 +10,18 @@ import java.util.List;
 @Mapper
 public interface User2GroupMapper {
     /**
-     * 获取某组的成员
+     * 获取某组的成员Id
      * @param groupId
-     * @return List<User>
+     * @return List<Integer> (内含useId)
      */
-    List<User> getUserByGroup(@Param("groupId") Integer groupId);
+    List<Integer> getUserByGroup(@Param("groupId") Integer groupId);
+
+    /**
+     * 根据userId 获取User对象
+     * @param userId
+     * @Return User
+     */
+    User getUserByUserId(@Param("userId")Integer userId);
 
     /**
      * 获取某用户所参加的组
