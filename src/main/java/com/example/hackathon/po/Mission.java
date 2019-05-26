@@ -1,8 +1,6 @@
 package com.example.hackathon.po;
 
 import com.example.hackathon.vo.MissionForm;
-
-import java.sql.Timestamp;
 import java.util.Date;
 
 public class Mission {
@@ -12,7 +10,7 @@ public class Mission {
     private int groupId;
     private Date starttime;
     private Date endtime;
-    private Integer status;
+    private Integer status=0;
 
 
     public void setForm(Mission mission, MissionForm missionForm){

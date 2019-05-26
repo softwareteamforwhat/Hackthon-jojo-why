@@ -27,6 +27,7 @@ public class AccountController {
         }
         //注册session
         session.setAttribute(InterceptorConfiguration.SESSION_KEY,userForm);
+
         return ResponseVO.buildSuccess(user);
     }
     @PostMapping("/register")
