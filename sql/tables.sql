@@ -77,12 +77,12 @@ CREATE TABLE `user2group`(
 
 INSERT INTO user2group (user_id,group_id) VALUES (1,1);
 
-CREATE TABLE `message`{
+CREATE TABLE `message`(
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `sender_id` int(11) NOT NULL,
     `receiver_id` int(11) NOT NULL,
     `data` varchar(50),
     PRIMARY KEY(`id`)
-}ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO message (id,sender_id,receiver_id,data)values(1,1,2,"1给2的message");
