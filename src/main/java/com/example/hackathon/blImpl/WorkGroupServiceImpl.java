@@ -7,7 +7,6 @@ import com.example.hackathon.po.WorkGroup;
 import com.example.hackathon.vo.ResponseVO;
 import com.example.hackathon.vo.UserForm;
 import com.example.hackathon.vo.WorkGroupForm;
-import com.example.hackathon.vo.WorkGroupVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -61,19 +60,16 @@ public class WorkGroupServiceImpl implements WorkGroupService {
 
     @Override
     public ResponseVO getWorkGroupById(int userId) {
-        return null;//TODO
-//        try {
-//            List<WorkGroup> reslist = user2GroupMapper.getGroupByUser(userId);
-//
-//                if(workGroup != null){
-//                    return ResponseVO.buildSuccess(new WorkGroupVO(workGroup));
-//                }else{
-//                    return ResponseVO.buildSuccess(null);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return ResponseVO.buildFailure("获取工作组失败");
-//        }
+
+        try {
+            List<WorkGroup> reslist = user2GroupMapper.getGroupByUser(userId);
+
+            return  ResponseVO.buildSuccess(reslist);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseVO.buildFailure("获取工作组失败");
+        }
     }
 
 
