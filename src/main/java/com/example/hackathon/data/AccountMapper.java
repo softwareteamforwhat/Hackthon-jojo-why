@@ -6,7 +6,17 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface AccountMapper {
 
+    /**
+     * 创建新用户
+     * @param username,password
+     * @return userId
+     */
     int createNewAccount(@Param("username") String username, @Param("password") String password);
 
+    /**
+     * 以用户名搜索用户
+     * @param username
+     * @return User
+     */
     User getAccountByName(@Param("username") String username);
 }

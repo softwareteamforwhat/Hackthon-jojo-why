@@ -18,4 +18,8 @@ public interface MemberMissionMapper {
      * @return
      */
     MemberMission selectMemberMissionById(int Id);
+
+    /**
+     *
+     */
 }
