@@ -24,11 +24,15 @@ public interface User2GroupMapper {
     User getUserByUserId(@Param("userId")Integer userId);
 
     /**
-     * 获取某用户所参加的组
+     * 获取某用户所参加的组的groupId
      * @param userId
-     * @return List<WorkGroup>
+     * @return List<Integer>(内含groupId)
      */
-    List<WorkGroup> getGroupByUser(@Param("userId") Integer userId);
+    List<Integer> getGroupIdByUserId(@Param("userId") Integer userId);
+    /**
+     * 获取对应groupId的workgroup
+     */
+    WorkGroup getGroupByGroupId(@Param("groupId")Integer groupId);
 
     /**
      * 用户加入某组

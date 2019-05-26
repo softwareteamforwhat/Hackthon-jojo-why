@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.hackathon.data.AccountMapper">
-    <select id=""
+    <select id="getUserByGroup">
+        select user_id from user2group where group_id=#{groupId}
+    </select>
+
+    <select id="getUserByUserId" resultType="UserResultMap">
+        select * from user where id=#{userId}
+    </select>
+
+    <select id="getGroupIdByUserId">
+        select group_id from user2group where user_id=#{userId}
+    </select>
+
+    <select id="getGroupByGroupId" resultType="GroupResultMap">
+        select * from workgroup where id=#{groupId}
+    </select>
+
+    <insert id="userJoinGroup">
+        insert into user2group (user_id,group_id)
+        values (#{userId},#{groupId})
+    </insert>
+
+    <delete id="userExitGroup">
+        delete from user2group where user_id=#{userId} and group_id=#{groupId}
+    </delete>
+
+    <resultMap id="UserResultMap" type="com.example.hackathon.po.User">
+        <id column="id" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+    </resultMap>
+
+    <!--数据库Date类型和javaDate类型可能不兼容-->
+    <resultMap id="GroupResultMap" type="com.example.hackathon.po.WorkGroup">
+        <id column="id" property="groupId"></id>
+        <result column="leader_id" property="leaderId"></result>
+        <result column="workgroupname" property="groupname"></result>
+        <result column="main_mission" property="mainMission"></result>
+        <result column="current_submission_id" property="currentSubmissionId"></result>
+        <result column="status" property="status"></result>
+        <result column="start_time" property="startDate"></result>
+        <result column="end_time" property="endDate"></result>
+    </resultMap>
 </mapper>
