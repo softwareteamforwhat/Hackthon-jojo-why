@@ -23,7 +23,7 @@ public class AccountController {
         UserForm userForm=new UserForm(username,password);
         UserVO user = accountService.login(userForm);
         if(user==null){
-            System.out.println("Null");
+            System.out.println("user为空");
             return ResponseVO.buildFailure(ACCOUNT_INFO_ERROR);
         }
         //注册session
