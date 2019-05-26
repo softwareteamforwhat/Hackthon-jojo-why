@@ -21,4 +21,5 @@
         <result column="workgroupname" property="groupname"></result>
         <result column="main_mission" property="mainMission"></result>
     </resultMap>
+
 </mapper>
