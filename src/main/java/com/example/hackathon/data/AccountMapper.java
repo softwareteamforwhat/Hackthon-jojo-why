@@ -2,7 +2,8 @@ package com.example.hackathon.data;
 
 import com.example.hackathon.po.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
+
 @Mapper
 public interface AccountMapper {
 
@@ -11,12 +12,12 @@ public interface AccountMapper {
      * @param username,password
      * @return userId
      */
-    int createNewAccount(@Param("username") String username, @Param("password") String password);
+    int createNewAccount(@RequestParam("username") String username, @RequestParam("password") String password);
 
     /**
      * 以用户名搜索用户
      * @param username
      * @return User
      */
-    User getAccountByName(@Param("username") String username);
+    User getAccountByName(@RequestParam("username") String username);
 }
