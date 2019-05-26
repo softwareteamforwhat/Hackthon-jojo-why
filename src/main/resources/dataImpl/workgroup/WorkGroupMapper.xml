@@ -10,7 +10,7 @@
         update workgroup set workgroupname=#{groupname},main_mission=#{main_mission} WHERE id=#{groupId};
     </update>
 
-    <select id="getWorkGroupByGroupId" resultType="WorkGroupResultMap">
+    <select id="getWorkGroupByGroupId" resultType="com.example.hackathon.po.WorkGroup">
         select * from workgroup as wg where wg.id=#{groudId}
     </select>
 
@@ -19,11 +19,6 @@
     </update>
 
 
-    <resultMap id="WorkGroupResultMap" type="com.example.hackathon.po.WorkGroup">
-        <id column="id" property="groupId"></id>
-        <result column="leader_id" property="leaderId"></result>
-        <result column="workgroupname" property="groupname"></result>
-        <result column="main_mission" property="mainMission"></result>
-    </resultMap>
+
 
 </mapper>

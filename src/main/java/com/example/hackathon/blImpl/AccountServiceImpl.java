@@ -15,6 +15,7 @@ public class AccountServiceImpl implements AccountService {
     private AccountMapper accountMapper;
     @Override
     public ResponseVO registerAccount(UserForm userForm) {
+        System.out.println(userForm.getPassword()+":"+userForm.getUsername());
         try {
             accountMapper.createNewAccount(userForm.getUsername(), userForm.getPassword());
         } catch (Exception e) {
@@ -26,6 +27,8 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public UserVO login(UserForm userForm) {
         User user = accountMapper.getAccountByName(userForm.getUsername());
+        System.out.println("userForm.getUsername():"+userForm.getUsername());
+        System.out.println(user.getPassword()+":"+userForm.getPassword());
         if (null == user || !user.getPassword().equals(userForm.getPassword())) {
             return null;
         }

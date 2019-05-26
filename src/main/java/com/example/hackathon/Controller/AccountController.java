@@ -33,6 +33,7 @@ public class AccountController {
     }
     @PostMapping("/register")
     public ResponseVO registerAccount(@RequestParam("username") String username,@RequestParam("password") String password){
+        System.out.println(username+":"+password);
         UserForm userForm=new UserForm(username,password);
         return accountService.registerAccount(userForm);
     }

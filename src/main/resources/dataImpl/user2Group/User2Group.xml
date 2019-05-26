@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hackathon.data.User2GroupMapper">
+    <select id="getUserByGroup">
+        select user_id from user2group where group_id=#{groupId}
+    </select>
+
+    <select id="getUserByUserId" resultType="com.example.hackathon.po.User">
+        select * from user where id=#{userId}
+    </select>
+
+    <select id="getGroupIdByUserId">
+        select group_id from user2group where user_id=#{userId}
+    </select>
+
+    <select id="getGroupByGroupId" resultType="com.example.hackathon.po.WorkGroup">
+        select * from workgroup where id=#{groupId}
+    </select>
+
+    <insert id="userJoinGroup">
+        insert into user2group (user_id,group_id)
+        values (#{userId},#{groupId})
+    </insert>
+
+    <delete id="userExitGroup">
+        delete from user2group where user_id=#{userId} and group_id=#{groupId}
+    </delete>
+
+
+
+
+</mapper>

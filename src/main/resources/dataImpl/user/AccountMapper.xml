@@ -6,13 +6,9 @@
         values(#{username},#{password})
     </insert>
 
-    <select id="getAccountByName" resultMap="User">
+    <select id="getAccountByName" resultType="com.example.hackathon.po.User">
         select * from user where username=#{username}
     </select>
 
-    <resultMap id="User" type="com.example.hackathon.po.User">
-        <id column="id" property="id"></id>
-        <result column="username" property="username"></result>
-        <result column="password" property="password"></result>
-    </resultMap>
+
 </mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.hackathon.data.MemberMissionMapper">
+    <select id="selectMemberMissionBySubIdAndUserId" resultType="com.example.hackathon.po.MemberMission">
+        select * from membermission where owner_id=#{userId} and submission_id=#{subMissionId}
+    </select>
+    <insert id="insertMemberMission" parameterType="com.example.hackathon.po.MemberMission">
+        insert into membermission (id,title,detail,start_time,end_time,status,submissionm_id,owner_id)
+        values (#{id},#{name},#{description},#{starttime},#{endtime},#{status},#{subMissionId},#{owner_id})
+    </insert>
+
+    <select id="selectMemberMissionById" resultType="com.example.hackathon.po.MemberMission">
+        select * from membermission where id=#{id}
+    </select>
+
+    <select id="selectMemberMissionListBySubId" resultType="com.example.hackathon.po.MemberMission">
+        select * from membermission where submission_id=#{subMissionId}
+    </select>
+
+    <update id="end">
+        update submission set status=1 where id=#{subMissionId}
+    </update>
+    <update id="distribute">
+        update submission set owner_id=#{userId} where id=#{memberMissionId}
+    </update>
+
+
+
+</mapper>

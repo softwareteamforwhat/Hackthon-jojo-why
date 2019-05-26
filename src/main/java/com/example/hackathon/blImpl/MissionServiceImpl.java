@@ -51,7 +51,10 @@ public class MissionServiceImpl implements MissionService {
     public ResponseVO addMemberMission(MemberMissionForm memberMissionForm) {
         try {
             MemberMission memberMission = new MemberMission();
-            setMission(memberMission, memberMissionForm);
+            memberMission.setName(memberMissionForm.getName());
+            memberMission.setDescription(memberMissionForm.getDescription());
+            memberMission.setStarttime(memberMissionForm.getStarttime());
+            memberMission.setEndtime(memberMissionForm.getEndtime());
             memberMissionMapper.insertMemberMission(memberMission);
             return ResponseVO.buildSuccess();
         }catch (Exception e){

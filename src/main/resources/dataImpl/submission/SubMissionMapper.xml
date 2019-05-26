@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.hackathon.data.SubMissionMapper">
-    <select id="selectSubMissionlistByGroupId" resultType="SubmissionResultMap">
+    <select id="selectSubMissionlistByGroupId" resultType="com.example.hackathon.po.SubMission">
         select * from submission where group_id=#{groupId}
     </select>
 
@@ -10,22 +10,13 @@
         values (#{id},#{name},#{discription},#{groupId},#{starttime},#{endtime})
     </insert>
 
-    <select id="selectSubMissionById" resultType="SubmissionResultMap">
+    <select id="selectSubMissionById" resultType="com.example.hackathon.po.SubMission">
         select * from submission where id=#{id}
     </select>
     <update id="end">
         update submission set status=1 where id=#{id}
     </update>
 
-    <resultMap id="SubmissionResultMap" type="com.example.hackathon.po.SubMission">
-        <id column="id" property="id"></id>
-        <result column="title" property="name"></result>
-        <result column="detail" property="description"></result>
-        <result column="group_id" property="groupId"></result>
-        <result column="start_time" property="starttime"></result>
-        <result column="end_time" property="endtime"></result>
-        <result column="status" property="status"></result>
-    </resultMap>
 
 
 </mapper>
