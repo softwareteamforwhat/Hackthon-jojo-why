@@ -18,9 +18,12 @@ public class AccountController {
     private AccountServiceImpl accountService;
     @PostMapping("/login")
     public ResponseVO login(@RequestParam("username")String username,@RequestParam("password") String password, HttpSession session){
+        System.out.println("username:"+username);
+        System.out.println("password:"+password);
         UserForm userForm=new UserForm(username,password);
         UserVO user = accountService.login(userForm);
         if(user==null){
+            System.out.println("Null");
             return ResponseVO.buildFailure(ACCOUNT_INFO_ERROR);
         }
         //注册session
