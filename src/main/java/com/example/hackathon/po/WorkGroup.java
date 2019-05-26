@@ -8,7 +8,7 @@ public class WorkGroup {
     private int groupId;
     private int userId;
     private String groupname;
-    private String mainMission;
+    private MainMission mainMission;
     private List<User> userList;
     /**
      * o表示正在进行中

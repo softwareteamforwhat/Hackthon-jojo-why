@@ -1,6 +1,7 @@
 package com.example.hackathon.blImpl;
 
 import com.example.hackathon.bl.WorkGroupService;
+import com.example.hackathon.data.User2GroupMapper;
 import com.example.hackathon.data.WorkGroupMapper;
 import com.example.hackathon.po.WorkGroup;
 import com.example.hackathon.vo.ResponseVO;
@@ -16,10 +17,14 @@ import java.util.List;
 public class WorkGroupServiceImpl implements WorkGroupService {
     @Autowired
     private WorkGroupMapper workGroupMapper;
+    private User2GroupMapper user2GroupMapper;
     @Override
     public ResponseVO addWorkGroup(WorkGroupForm workGroupForm) {
         try {
-            //TODO 数据库新增工作组
+            int lead_id=workGroupForm.getUserId();
+            String groupname=workGroupForm.getGroupname();
+            String main_mission=workGroupForm.getMainMission();
+            workGroupMapper.createNewWorkGroup(lead_id,groupname,main_mission);
             return ResponseVO.buildSuccess();
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,7 +55,7 @@ public class WorkGroupServiceImpl implements WorkGroupService {
     }
 
     @Override
-    public ResponseVO getAllWorkGroup() {
+    public ResponseVO getWorkGroupById() {
         try {
             return null;
             //TODO
@@ -61,17 +66,7 @@ public class WorkGroupServiceImpl implements WorkGroupService {
         }
     }
 
-    @Override
-    public ResponseVO getOtherWorkGroup() {
-        try {
-            return null;
-            //TODO
-//            return ResponseVO.buildSuccess(changeList(workGroupMapper.selectAllMovie()));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseVO.buildFailure("获取工作组失败");
-        }
-    }
+
     private List<WorkGroupVO> changeList(List<WorkGroup> workGroupList){
         List<WorkGroupVO> WorkGroupVOList = new ArrayList<>();
         for(WorkGroup workGroup : workGroupList){
