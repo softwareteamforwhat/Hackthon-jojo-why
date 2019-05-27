@@ -18,12 +18,15 @@ public class WorkGroupServiceImpl implements WorkGroupService {
     @Autowired
     private WorkGroupMapper workGroupMapper;
     private User2GroupMapper user2GroupMapper;
+
+
+
     @Override
-    public ResponseVO addWorkGroup(WorkGroupForm workGroupForm) {
+    public ResponseVO addWorkGroup(int groupId, int userId, String groupName, String mainMission) {
         try {
-            int lead_id=workGroupForm.getUserId();
-            String groupname=workGroupForm.getGroupname();
-            String main_mission=workGroupForm.getMainMission();
+            int lead_id=userId;
+            String groupname=groupName;
+            String main_mission=mainMission;
             workGroupMapper.createNewWorkGroup(lead_id,groupname,main_mission);
             return ResponseVO.buildSuccess();
         } catch (Exception e) {
@@ -33,12 +36,12 @@ public class WorkGroupServiceImpl implements WorkGroupService {
     }
 
     @Override
-    public ResponseVO updateWorkGroup(WorkGroupForm updateWorkGroupForm) {
+    public ResponseVO updateWorkGroup(int groupId,int userId,String groupName,String mainMission) {
         try {
-            int lead_id=updateWorkGroupForm.getUserId();
-            String groupname=updateWorkGroupForm.getGroupname();
-            String main_mission=updateWorkGroupForm.getMainMission();
-            workGroupMapper.updateWorkGroup(lead_id,groupname,main_mission);
+            int lead_id=userId;
+            String groupname=groupName;
+            String main_mission=mainMission;
+            workGroupMapper.createNewWorkGroup(lead_id,groupname,main_mission);
             return ResponseVO.buildSuccess();
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,7 +63,6 @@ public class WorkGroupServiceImpl implements WorkGroupService {
 
     @Override
     public ResponseVO getWorkGroupById(int userId) {
-
         try {
             List<Integer> reslist = user2GroupMapper.getGroupIdByUserId(userId);
             List<WorkGroup> wlist=new ArrayList<WorkGroup>();
@@ -80,10 +82,8 @@ public class WorkGroupServiceImpl implements WorkGroupService {
 
 
     @Override
-    public ResponseVO addMember(UserForm userForm, WorkGroupForm workGroupForm) {
+    public ResponseVO addMember(int userId, int groupId) {
         try {
-            int userId=userForm.getUserId();
-            int groupId=workGroupForm.getGroupId();
             user2GroupMapper.userJoinGroup(userId,groupId);
             return ResponseVO.buildSuccess();
         }catch (Exception e){

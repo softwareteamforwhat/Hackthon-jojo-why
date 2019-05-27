@@ -10,6 +10,13 @@ public class WorkGroupForm {
     private String mainMission;
     private List<UserVO> userVOList;
 
+    public WorkGroupForm(int groupId, int userId, String groupname, String mainMission) {
+        this.groupId = groupId;
+        this.userId = userId;
+        this.groupname = groupname;
+        this.mainMission = mainMission;
+    }
+
     public int getStatus() {
         return status;
     }
