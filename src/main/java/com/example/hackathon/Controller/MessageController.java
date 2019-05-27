@@ -18,7 +18,7 @@ public class MessageController {
     }
 
     @PostMapping("/getReceivedMessage")
-    public ResponseVO getReceivedMessage(@RequestParam("userId") String userId){
+    public ResponseVO getReceivedMessage(@RequestParam(value = "userId",required = false) String userId){
         return messageService.getReceivedMessage(Integer.parseInt(userId));
     }
 

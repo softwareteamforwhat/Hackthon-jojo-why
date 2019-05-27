@@ -1,9 +1,17 @@
 package com.example.hackathon.vo;
 
+import com.example.hackathon.po.User;
+
 public class UserForm {
     public UserForm(String username, String password) {
         this.username=username;
         this.password=password;
+    }
+
+    public UserForm(User user){
+        this.userId=user.getId();
+        this.username=user.getUsername();
+        this.password=user.getPassword();
     }
 
 

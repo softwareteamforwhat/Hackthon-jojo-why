@@ -18,10 +18,12 @@ public class AccountServiceImpl implements AccountService {
         System.out.println(userForm.getPassword()+":"+userForm.getUsername());
 
             accountMapper.createNewAccount(userForm.getUsername(), userForm.getPassword());
+            User user=accountMapper.getAccountByName(userForm.getUsername());
+            UserForm userForm1=new UserForm(user);
 
         //    return ResponseVO.buildFailure("错误，账号已存在！");
 
-        return ResponseVO.buildSuccess();
+        return ResponseVO.buildSuccess(userForm1);
     }
 
     @Override
