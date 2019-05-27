@@ -14,25 +14,25 @@ public class WorkGroupController {
     private WorkGroupService workGroupService;
 
     @RequestMapping(value = "/work_group/add", method = RequestMethod.POST)
-    public ResponseVO addWorkGroup(@RequestParam("groupId") int groupId,@RequestParam("UserId") int userId,@RequestParam("groupName") String groupName,@RequestParam("mainMission") String mainMission){
-        return workGroupService.addWorkGroup(groupId,userId,groupName,mainMission);
+    public ResponseVO addWorkGroup(@RequestParam("groupId") String groupId,@RequestParam("UserId") String userId,@RequestParam("groupName") String groupName,@RequestParam("mainMission") String mainMission){
+        return workGroupService.addWorkGroup(Integer.parseInt(groupId),Integer.parseInt(userId),groupName,mainMission);
     }
     @RequestMapping(value = "/work_group/all", method = RequestMethod.POST)
-    public ResponseVO getWorkGroupById(@RequestParam("userId") int id){
-        return workGroupService.getWorkGroupById(id);
+    public ResponseVO getWorkGroupById(@RequestParam("userId") String id){
+        return workGroupService.getWorkGroupById(Integer.parseInt(id));
     }
 
     @RequestMapping(value = "/work_group/off",method = RequestMethod.POST)
-    public ResponseVO removeGroup(@RequestParam("groupId") int id){
-        return workGroupService.removeWorkGroup(id);
+    public ResponseVO removeGroup(@RequestParam("groupId") String id){
+        return workGroupService.removeWorkGroup(Integer.parseInt(id));
     }
 
     @RequestMapping(value = "/work_group/update",method = RequestMethod.POST)
-    public ResponseVO updateGroup(@RequestParam("groupId") int groupId,@RequestParam("UserId") int userId,@RequestParam("groupName") String groupName,@RequestParam("mainMission") String mainMission){
-        return workGroupService.updateWorkGroup(groupId,userId,groupName,mainMission);
+    public ResponseVO updateGroup(@RequestParam("groupId") String groupId,@RequestParam("UserId") String userId,@RequestParam("groupName") String groupName,@RequestParam("mainMission") String mainMission){
+        return workGroupService.updateWorkGroup(Integer.parseInt(groupId),Integer.parseInt(userId),groupName,mainMission);
     }
     @RequestMapping(value = "/work_group/add_member",method = RequestMethod.POST)
-    public ResponseVO addMember(@RequestParam("userId") int userId,@RequestParam("groupId") int  groupId){
-        return workGroupService.addMember(userId,groupId);
+    public ResponseVO addMember(@RequestParam("userId") String userId,@RequestParam("groupId") String  groupId){
+        return workGroupService.addMember(Integer.parseInt(userId),Integer.parseInt(groupId));
     }
 }
