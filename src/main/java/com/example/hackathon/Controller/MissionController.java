@@ -14,8 +14,8 @@ public class MissionController {
     private MissionService missionService;
 
     @PostMapping("/addMain")
-    public ResponseVO addMainMission(@RequestParam("mainMission")  String mainMission,@RequestParam("groupId") int groupId){
-        return missionService.addMainMission(mainMission,groupId);
+    public ResponseVO addMainMission(@RequestParam("mainMission")  String mainMission,@RequestParam("groupId") String groupId){
+        return missionService.addMainMission(mainMission,Integer.parseInt(groupId));
     }
     @PostMapping("/addSub")
     public ResponseVO addSubMission(@RequestParam("subMissionForm") SubMissionForm subMissionForm){
@@ -26,42 +26,41 @@ public class MissionController {
         return missionService.addMemberMission(memberMissionForm);
     }
     @PostMapping("/distributeMem")
-    public ResponseVO distributeMemberMission(@RequestParam("memberMissionId") int memberMissionId,@RequestParam("userId") int userId){
-        return missionService.distributeMemberMission(memberMissionId, userId);
+    public ResponseVO distributeMemberMission(@RequestParam("memberMissionId") String memberMissionId,@RequestParam("userId") String userId){
+        return missionService.distributeMemberMission(Integer.parseInt(memberMissionId), Integer.parseInt(userId));
     }
     @PostMapping("/getMain")
-    public ResponseVO getMainMission(@RequestParam("groupId") int groupId){
-        return missionService.getMainMission(groupId);
+    public ResponseVO getMainMission(@RequestParam("groupId") String groupId){
+        return missionService.getMainMission(Integer.parseInt(groupId));
     }
     @PostMapping("/getCurrentSub")
-    public ResponseVO getSubMission(@RequestParam("groupId") int groupId){
-        return missionService.getCurrentSubMission(groupId);
+    public ResponseVO getSubMission(@RequestParam("groupId") String groupId){
+        return missionService.getCurrentSubMission(Integer.parseInt(groupId));
     }
     @PostMapping("/getMem")
-    public ResponseVO getMemberMission(@RequestParam("groupId") int groupId,@RequestParam("userId") int userId){
-        return missionService.getMemberMission(groupId,userId);
+    public ResponseVO getMemberMission(@RequestParam("groupId") String groupId,@RequestParam("userId") String userId){
+        return missionService.getMemberMission(Integer.parseInt(groupId),Integer.parseInt(userId));
     }
     @PostMapping("/getSubList")
-    public ResponseVO getSubMissionList(@RequestParam("groupId") int groupId){
-        return missionService.getSubMissionList(groupId);
+    public ResponseVO getSubMissionList(@RequestParam("groupId") String groupId){
+        return missionService.getSubMissionList(Integer.parseInt(groupId));
     }
     @PostMapping("/getMemList")
-    public ResponseVO getMemberMissionList(@RequestParam("subMissionId") int subMissionId){
-        return missionService.getMemberMissionList(subMissionId);
+    public ResponseVO getMemberMissionList(@RequestParam("subMissionId") String subMissionId){
+        return missionService.getMemberMissionList(Integer.parseInt(subMissionId));
     }
 
     @PostMapping("/endMain")
-    public ResponseVO endMainMission(@RequestParam("groupId") int groupId){
-        return missionService.endMainMission(groupId);
+    public ResponseVO endMainMission(@RequestParam("groupId") String groupId){
+        return missionService.endMainMission(Integer.parseInt(groupId));
     }
     @PostMapping("/endSub")
-    public ResponseVO endSubMission(@RequestParam("groupId") int groupId){
-        return missionService.endCurrentSubMission(groupId);
+    public ResponseVO endSubMission(@RequestParam("groupId") String groupId){
+        return missionService.endCurrentSubMission(Integer.parseInt(groupId));
     }
     @PostMapping("/endMem")
-    public ResponseVO endMemberMission(@RequestParam("groupId") int groupId,@RequestParam("userId") int userId){
-        return missionService.endMemberMission(groupId, userId);
+    public ResponseVO endMemberMission(@RequestParam("groupId") String groupId,@RequestParam("userId") String userId) {
+        return missionService.endMemberMission(Integer.parseInt(groupId), Integer.parseInt(userId));
     }
-
 
 }

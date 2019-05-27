@@ -13,13 +13,13 @@ public class MessageController {
     private MessageService messageService;
 
     @PostMapping("/send")
-    public ResponseVO sendMessage(@RequestParam("senderId") int senderId,@RequestParam("receiverId") int receiverId,@RequestParam("data") String data){
-        return messageService.sendMessage(senderId, receiverId, data);
+    public ResponseVO sendMessage(@RequestParam("senderId") String senderId,@RequestParam("receiverId") String receiverId,@RequestParam("data") String data){
+        return messageService.sendMessage(Integer.parseInt(senderId), Integer.parseInt(receiverId), data);
     }
 
     @PostMapping("/getReceivedMessage")
-    public ResponseVO getReceivedMessage(@RequestParam("userId") int userId){
-        return messageService.getReceivedMessage(userId);
+    public ResponseVO getReceivedMessage(@RequestParam("userId") String userId){
+        return messageService.getReceivedMessage(Integer.parseInt(userId));
     }
 
 
