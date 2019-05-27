@@ -27,15 +27,12 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public ResponseVO sendMessage(int senderId, int receiverId,String data) {
-        try {
             Message message = new Message();
             message.setSenderId(senderId);
             message.setReceiverId(receiverId);
             message.setData(data);
             messageMapper.insertMessage(message);
             return ResponseVO.buildSuccess();
-        }catch (Exception e){
-            return ResponseVO.buildFailure("");
-        }
+
     }
 }

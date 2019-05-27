@@ -10,7 +10,7 @@ public interface MessageMapper {
     /**
      * @param message
      */
-    void insertMessage(@Param("message") Message message);
+    void insertMessage(Message message);
 
     /**
      * @param userId
