@@ -37,6 +37,6 @@ public class AccountServiceImpl implements AccountService {
             return null;
         }
 
-        return new UserVO(userForm);
+        return new UserVO(user);
     }
 }

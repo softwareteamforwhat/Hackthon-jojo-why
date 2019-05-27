@@ -12,6 +12,11 @@ public class UserVO {
         this.username = userForm.getUsername();
         this.password = userForm.getPassword();
     }
+    public UserVO(User user){
+        this.id=user.getId();
+        this.username=user.getUsername();
+        this.password=user.getPassword();
+    }
 
     public Integer getId() {
         return id;

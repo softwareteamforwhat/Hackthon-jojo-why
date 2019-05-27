@@ -14,11 +14,14 @@ public class MessageController {
 
     @PostMapping("/send")
     public ResponseVO sendMessage(@RequestParam("senderId") String senderId,@RequestParam("receiverId") String receiverId,@RequestParam("data") String data){
+        System.out.println("sender:"+senderId);
+        System.out.println("receiverId:"+receiverId);
+        System.out.println("data"+data);
         return messageService.sendMessage(Integer.parseInt(senderId), Integer.parseInt(receiverId), data);
     }
 
     @PostMapping("/getReceivedMessage")
-    public ResponseVO getReceivedMessage(@RequestParam(value = "userId",required = false) String userId){
+    public ResponseVO getReceivedMessage(@RequestParam(value = "userId") String userId,@RequestParam("motherfucker")String motherfucker){
         return messageService.getReceivedMessage(Integer.parseInt(userId));
     }
 

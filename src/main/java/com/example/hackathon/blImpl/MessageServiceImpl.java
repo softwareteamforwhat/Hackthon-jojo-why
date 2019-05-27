@@ -33,7 +33,7 @@ public class MessageServiceImpl implements MessageService {
             message.setReceiverId(receiverId);
             message.setData(data);
             messageMapper.insertMessage(message);
-            return ResponseVO.buildSuccess("");
+            return ResponseVO.buildSuccess();
         }catch (Exception e){
             return ResponseVO.buildFailure("");
         }
